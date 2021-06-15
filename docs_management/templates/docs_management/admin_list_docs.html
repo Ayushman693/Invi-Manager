@@ -1,0 +1,52 @@
+{% extends "admin_login_base.html" %}
+
+{% load static %}
+{% block title %}Products{% endblock %}
+
+{% block css_sheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <div class="row">
+        <h3>List of Uploaded Docs :</h3> 
+      </div>
+    </div>
+
+    <div>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Uploaded On</th>
+            <th>Status</th>
+            <th>View</th>
+            <th>Change Status</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doc in docs %}
+            <tr>
+              <td>{{ doc.id }}</td>
+              <td>{{ doc.uploaded_on | date:"d M Y P" }}</td>
+              <td>{{ doc.status }}</td>
+              <td><a href="{{ doc.storage_path }}" >Click Here</a></td>
+              <td onclick="updateStatus()">
+                <form method="post" action="{% url 'update_status' doc.id %}">{% csrf_token %}<input type="hidden" value="{{ doc.next_status }}" name="status"><button type="submit">Change</button></form>
+              </td>
+              <td><a href="{% url 'list_digitized_docs' doc.id %}">Update</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock %}
+
+{% block js_scripts %}
+  <script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer>
+    function updateStatus(event){
+      $
+    }
+  </script>
+{% endblock %}

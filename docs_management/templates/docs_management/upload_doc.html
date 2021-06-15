@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Products{% endblock %}
+
+{% block css_sheets %}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <h3>New Doc :</h3> 
+    </div>
+  </div>
+
+  <div>
+  
+
+    <form id="new-doc" class="form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="doc" class="form-group" accept=".pdf" required>
+      <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block js_scripts %}
+
+{% endblock %}
